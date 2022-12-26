@@ -1,0 +1,522 @@
+﻿@model Contact
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Jthemes" />
+    <meta name="description" content="ImmiEx - Immigration and Visa Consulting Website Template" />
+    <meta name="keywords" content="Responsive, Jthemes, One Page, Landing, Business, Coaching, Consulting, Creative, Immigration, Visa">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
+    <link rel="icon" href="apple-touch-icon.html" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet" crossorigin="anonymous">
+    <link href="~/css/flaticon.css" rel="stylesheet">
+    <link id="effect" href="~/css/dropdown-effects/fade-down.css" media="all" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/tweenmax.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.css" rel="stylesheet">
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="~/css/red.css" rel="stylesheet">
+    <link href="~/css/aqua.css" rel="alternate stylesheet" title="aqua-theme">
+    <link href="~/css/blue.css" rel="alternate stylesheet" title="blue-theme">
+    <link href="~/css/salmon.css" rel="alternate stylesheet" title="salmon-theme">
+    <link href="~/css/green.css" rel="alternate stylesheet" title="green-theme">
+    <link href="~/css/olive.css" rel="alternate stylesheet" title="olive-theme">
+    <link href="~/css/orange.css" rel="alternate stylesheet" title="orange-theme">
+    <link href="~/css/darkred.css" rel="alternate stylesheet" title="darkred-theme">
+    <link href="~/css/teal.css" rel="alternate stylesheet" title="teal-theme">
+    <link href="~/css/yellow.css" rel="alternate stylesheet" title="yellow-theme">
+    <link href="~/css/responsive.css" rel="stylesheet">
+</head>
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"><div class="cssload-box-loading"></div></div>
+    </div>
+    <div id="page" class="page">
+        <header id="header-2" class="header white-menu">
+            <div class="header-wrapper">
+                <div class="wsmobileheader clearfix">
+                    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+                    <span class="smllogo"><img src="~/images/logo-black.png" width="200" height="50" alt="mobile-logo" /></span>
+                    <a href="tel:123456789" class="callusbtn"><i class="fas fa-phone"></i></a>
+                </div>
+                <div class="headtoppart bg-white clearfix">
+                    <div class="headerwp clearfix">
+                        <div class="headertopleft">
+                            <div class="header-info clearfix">
+                                <span class="txt-400"><i class="fa-solid fa-location-pin"></i>Баку, Каспиан Плаза</span>
+                            </div>
+                        </div>
+                        <div class="headertopright header-contacts">
+                            <a href="/Main/Index" class="callusbtn b-right txt-400">
+                                <img style="width: 20px;height: 20px;border-radius: 100%" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png">
+                            </a>
+                            <a href="/Main/RusIndex" class="callusbtn b-right txt-400">
+                                <img style="width: 20px;height: 20px;border-radius: 100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/1280px-Flag_of_Russia.svg.png">
+                            </a>
+                            <a href="tel:123456789" class="callusbtn b-right txt-400">&#8194;+994 55 665 76 37</a>
+                            <a href="mailto:yourdomain@mail.com" class="txt-400"><i class="far fa-envelope-open"></i>info@ucg.az</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="wsmainfull menu clearfix">
+                    <div class="wsmainwp clearfix">
+                        <nav class="wsmenu clearfix blue-header">
+                            <ul class="wsmenu-list">
+                                <li aria-haspopup="true">
+                                    <a href="#home">Главная</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="#services-4">Услуги</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="#brands-3">Как это работает?</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="/Main/Privacy">Политика конфиденциальности</a>
+                                </li>
+                                <li class="nl-simple" aria-haspopup="true">
+                                    <a href="#request-1" class="header-btn btn-primary tra-black-hover last-link">Контакт</a>
+                                </li>
+                                <div class="mobil" style="width: 100%;display: none;">
+                                    <br><br>
+                                    <a style="margin-left: 10px" href="index.html">
+                                        EN
+                                        <img style="width: 30px;height: 20px;border-radius: 100%" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png">
+                                    </a>
+                                    <a style="margin-left: 10px" href="rusindex.html">
+                                        RU
+                                        <img style="width: 30px;height: 20px;border-radius: 100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/1280px-Flag_of_Russia.svg.png">
+                                    </a>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="hero-1" class="hero-section division">
+            <div class="slider">
+                <ul class="slides">
+                    <li id="slide-1">
+                        <img src="~/images/slider/slide-1.jpg" alt="slide-background">
+                        <div class="caption d-flex align-items-center center-align">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="caption-txt white-color">
+                                            <h2 style="text-transform: inherit;font-weight: 700;text-shadow: 0 0 10px #000;">Добро пожаловать в UVisa !</h2>
+                                            <p class="p-md" style="font-size: 30px;text-shadow: 0 0 10px #fff;">
+                                                Проверка туристической визы онлайн. <br>
+                                                Найти информацию о визе для всех стран
+                                            </p>
+                                            <div style="width: 30%;display: inline-block;margin: 2% 0;" id="input-visa" class="col-md-12 input-visa">
+                                                <select id="inlineFormCustomSelect1" name="visa" class="custom-select visa" required>
+                                                    <option value="">Выберите визу</option>
+                                                    <option>Студенческая виза</option>
+                                                    <option>Tуристическая виза</option>
+                                                    <option>Рабочая виза</option>
+                                                    <option>Деловая виза</option>
+                                                    <option>Гостевая виза</option>
+                                                    <option>PR виза</option>
+                                                </select>
+                                            </div>
+                                            <div style="width: 30%;display: inline-block;margin: 2% 0;" id="input-country" class="col-md-12 input-country">
+                                                <select id="inlineFormCustomSelect2" name="country" class="custom-select country" required>
+                                                    <option value="">Виза для</option>
+                                                    <option>Australia</option>
+                                                    <option>Canada</option>
+                                                    <option>United Kingdom</option>
+                                                    <option>USA</option>
+                                                    <option>Singapore</option>
+                                                    <option>Netherlands</option>
+                                                </select>
+                                            </div><br>
+                                            <a href="/Main/RusApplication" class="btn btn-md btn-primary tra-white-hover btn-arrow">
+                                                <span>Начать<i class="fas fa-arrow-right"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="services-4" class="wide-70 services-section division">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-title center">
+                        <h2 class="h2-xs">Почему выбрали нас?</h2>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="sbox-4 icon-sm">
+                            <a>
+                                <div class="sbox-4-icon grey-color"></div>
+                                <div class="sbox-4-txt">
+                                    <h5 class="h5-md">Вы будете в надежных руках</h5>
+                                    <p>Будь осторожен! К сожалению, в настоящее время много мошенничества в сфере образовательного консалтинга официально зарегистрированной компанией United Consultanting Group, которая имеет официальные соглашения с государственными университетами Азербайджана. United Consultanting Group успешно зарегистрировала более 300 студентов со всего мира</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="sbox-4 icon-sm">
+                            <a>
+                                <div class="sbox-4-icon grey-color"></div>
+                                <div class="sbox-4-txt">
+                                    <h5 class="h5-md">Расходы</h5>
+                                    <p>Самые доступные цены на рынке</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="sbox-4 icon-sm">
+                            <a>
+                                <div class="sbox-4-icon grey-color"></div>
+                                <div class="sbox-4-txt">
+                                    <h5 class="h5-md">Хорошая поддержка</h5>
+                                    <p>Наши менеджеры всегда готовы ответить на все ваши вопросы. Вы можете позвонить нам в любое время. Также вы можете посетить наш офис для личных консультаций.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about-6" class="bg-scroll pt-100 about-section division">
+            <div class="container white-color">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about-6-img text-center">
+                            <img class="img-fluid" src="~/images/image-08.png" alt="about-image" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-6-txt pc-20">
+                            <span class="section-id id-color">Жить в Азербайджане</span>
+                            <h2 class="h2-xs">Вы хотите жить в Баку?</h2>
+                            <p class="p-md">
+                                Азербайджан является идеальной страной для иностранных студентов в зависимости от признанного во всем мире диплома, высокого уровня образования, легкого въездного барьера, низкой стоимости жизни, низкой стоимости обучения в университете, высокоразвитой и самой безопасной страны. ....
+                            </p>
+                            <a href="#" class="btn btn-md btn-primary tra-white-hover btn-arrow">
+                                <span>Прочитайте больше</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="brands-3" class="wide-80 brands-section division">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-title center">
+                        <h2 class="h2-xs">Как это работает?</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="brands-filter mb-50">
+                            <button style="border: 1px solid green; padding: 1rem .5rem; border-radius: 1rem; color: green" data-filter=".canada" id="canada">Электронная виза (e-Visa)</button>
+                            <button style="border: 1px solid green; padding: 1rem .5rem; border-radius: 1rem; color: green" data-filter=".australia" id="australia">e-Visa по прибытии</button>
+                            <button style="border: 1px solid green; padding: 1rem .5rem; border-radius: 1rem; color: green" data-filter=".usa" id="usa">Здоровье</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 brands-list">
+                        <div class="masonry-wrap grid-loaded hover-primary">
+                            <div style="margin-left: 100px" class="brand-3 canada">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Заполнить онлайн-заявку</h5>
+                                            <p>Заполните нашу простую онлайн-заявку и оплатите кредитной картой или PayPal</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 canada">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Получить документ по электронной почте</h5>
+                                            <p>Не нужно связываться с посольством. Мы делаем это за вас, чтобы вы не теряли драгоценное время</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 canada">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Введите пункт назначения</h5>
+                                            <p>Предъявите свой паспорт и документ, который мы предоставляем при въезде в страну назначения.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 australia">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Заполнить онлайн-заявку</h5>
+                                            <p>Заполните наше простое онлайн-приложение для оплаты кредитной картой или PayPal</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 australia">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Получите визу по прибытии с подтверждением по электронной почте</h5>
+                                            <p>Нет необходимости иметь дело с посольством или терять драгоценное время в аэропорту назначения.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 australia">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Введите пункт назначения</h5>
+                                            <p>Предъявите свой паспорт и документ, который мы предоставляем в аэропорту назначения. Получение визы и въезд в страну.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 usa">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Подать заявку онлайн</h5>
+                                            <p>Наша форма заявки на 100% цифровая, ее легко заполнить, заполнить и оплатить с помощью кредитной карты или PayPal.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 usa">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Получите декларацию о состоянии здоровья по электронной почте</h5>
+                                            <p>Не нужно связываться с посольством. Мы делаем это за вас, чтобы вы не теряли драгоценное время.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="margin-left: 100px" class="brand-3 usa">
+                                <div class="sbox-4 icon-sm">
+                                    <a>
+                                        <div class="sbox-4-icon grey-color"></div>
+                                        <div class="sbox-4-txt">
+                                            <h5 class="h5-md">Отправляйся в путешествие!</h5>
+                                            <p>По прибытии в аэропорт предъявите свой паспорт и декларацию о состоянии здоровья, которую мы предоставим.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="faqs-1" class="wide-100 faqs-section division">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-title center">
+                        <h2 class="h2-xs">Часто задаваемые вопросы</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div id="accordion" role="tablist">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="h5-sm">
+                                        <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                                            <span>1.</span> Как я могу поехать в Шенген из Азербайджана?
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+                                    <div class="card-body">
+                                        <div class="box-list">
+                                            <div class="box-list-icon"><i class="fas fa-genderless"></i></div>
+                                            <p>
+                                                YВы можете получить учебную или гостевую визу в страны Шенгенского соглашения через 1 месяц после прибытия в Азербайджан с помощью United Colsulting Group.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingTwo">
+                                    <h5 class="h5-sm">
+                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                            <span>2.</span> Есть ли общежитие или квартира?
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                            По прибытии в Азербайджан студент сможет выбрать подходящее место для проживания в зависимости от индивидуальных предпочтений и основных требований.
+                                        </p>
+                                        <p>
+                                            Менеджеры United Consulting помогут с максимально комфортным размещением.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingThree">
+                                    <h5 class="h5-sm">
+                                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
+                                            <span>3.</span> Как поступить в университет?
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                            Вы выбираете университет и специальность, в которых наши консультанты могут Вам помочь. После того, как наши менеджеры подготовят вашу электронную визу и официальное приглашение от выбранного университета и Министерства образования Азербайджана.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingFour">
+                                    <h5 class="h5-sm">
+                                        <a class="collapsed" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
+                                            <span>4.</span> Стипендия в Азербайджане?
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                            К сожалению, стипендии для иностранных студентов нет.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="request-1" class="bg-image wide-60 request-form-section division">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-6 col-xl-6">
+                        <div class="request-txt white-color pc-20 mb-40">
+                            <span class="section-id id-color">Бесплатная поддержка 24/7</span>
+                            <h2 class="h2-xs">Получите бесплатную и качественную онлайн-консультацию</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-5 offset-xl-1">
+                        <div id="request-form" class="text-center mb-40">
+                            <form method="post" action="/Main/AddContact" class="row request-form bg-lightgrey">
+                                <div class="col-md-12">
+                                </div>
+                                <div id="input-name" class="col-md-12">
+                                    <input type="text" asp-for="ContactName" class="form-control name" placeholder="Введите ваше имя*" required>
+                                </div>
+                                <div id="input-email" class="col-md-12">
+                                    <input type="text" asp-for="ContactEmail"  class="form-control email" placeholder="Введите ваше E-mail*" required>
+                                </div>
+                                <div id="input-phone" class="col-md-12">
+                                    <input type="tel" asp-for="ContactPhone"  class="form-control phone" placeholder="Введите свой номер телефона*" required>
+                                </div>
+                                <div id="input-phone" class="col-md-12">
+                                    <textarea asp-for="ContactMessage" style="width: 100%; padding: .5rem; border: 1px solid #ddd;outline:none;" placeholder="Сообщение...*"></textarea>
+                                </div>
+                                <div class="col-md-12 form-btn">
+                                    <button type="submit" class="btn btn-primary tra-black-hover submit">послать</button>
+                                </div>
+                                <div class="col-md-12 request-form-msg text-center">
+                                    <div class="sending-msg"><span class="loading"></span></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer-3" class="wide-40 footer division">
+            <div class="container">
+                <div class="bottom-footer">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-8 col-lg-9 text-right">
+                            <p class="footer-copyright"><a href="https://api.whatsapp.com/send?phone=994552291080" class="cprght">Copyright © 2022 ASADZ GROUP All Rights Reserved</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/modernizr.custom.js"></script>
+    <script src="~/js/jquery.easing.js"></script>
+    <script src="~/js/jquery.appear.js"></script>
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <script src="~/js/menu.js"></script>
+    <script src="~/js/materialize.js"></script>
+    <script src="~/js/jquery.scrollto.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/js/isotope.pkgd.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/hero-request-form.js"></script>
+    <script src="~/js/hero-register-form.js"></script>
+    <script src="~/js/request-form.js"></script>
+    <script src="~/js/contact-form.js"></script>
+    <script src="~/js/comment-form.js"></script>
+    <script src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/changer.js"></script>
+    <script defer src="~/js/styleswitch.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".australia").hide();
+            $(".usa").hide();
+            $(".uk").hide();
+            $("#australia").click(function () {
+                $(".australia").show();
+            });
+            $("#usa").click(function () {
+                $(".usa").show();
+            });
+            $("#uk").click(function () {
+                $(".uk").show();
+            })
+        })
+    </script>
+</body>
+</html>	

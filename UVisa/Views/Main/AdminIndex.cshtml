@@ -1,0 +1,194 @@
+﻿@{
+    Layout = null;
+}
+@model List<UserInfo>
+@{
+    var a = 1;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/adminstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Admin Panel</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+            </div>
+
+            <span class="logo_name">Admin Panel</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li>
+                    <a href="/Main/Index">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">İstifadəçilər</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Main/Index" target="_blank">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">Websayt</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li>
+                    <a href="/Main/LogOut">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" id="word" placeholder="Search here...">
+            </div>
+            <button id="axtar" type="button" class="btn btn-success py-2 px-4">Axtar</button>
+
+        </div>
+
+        <div class="dash-content">
+
+            <div class="activity">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">İstifadəçilər</span>
+                </div>
+
+                <div class="activity-data">
+                    <table class="table table-secondary w-100 text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Adı</th>
+                                <th scope="col">Soyadı</th>
+                                <th scope="col">Yaşı</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Mail ünvanı</th>
+                                <th scope="col">Passport ID</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Şəkil</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbod">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@a</th>
+                                    <td>@item.UserInfoName</td>
+                                    <td>@item.UserInfoSurname</td>
+                                    <td>@item.UserInfoAge</td>
+                                    <td>@item.UserInfoPhone</td>
+                                    <td>@item.UserInfoEmail</td>
+                                    <td>@item.UserInfoPassportId</td>
+                                    <td>@item.UserInfoTypeVisa</td>
+                                    <td style="width:5%"><img class="w-100 modal-target" src="~/images/@item.UserInfoFile" /></td>
+                                </tr>
+                                a++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div aria-label="Page navigation example">
+                    <ul class="pagination">
+                        @for (int i = 0; i < ViewBag.Count; i++)
+                        {
+                            <li class="page-item"><a class="page-link" href="?page=@i">@(i + 1)</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="modal" class="modal">
+        <span id="modal-close" class="modal-close">&times;</span>
+        <img id="modal-content" class="modal-content">
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
+
+    <script>
+        var modal = document.getElementById('modal');
+
+        var modalClose = document.getElementById('modal-close');
+        modalClose.addEventListener('click', function () {
+            modal.style.display = "none";
+        });
+        document.addEventListener('click', function (e) {
+            if (e.target.className.indexOf('modal-target') !== -1) {
+                console.log("65")
+                var img = e.target;
+                var modalImg = document.getElementById("modal-content");
+                var captionText = document.getElementById("modal-caption");
+                modal.style.display = "block";
+                modalImg.src = img.src;
+                captionText.innerHTML = img.alt;
+            }
+        });
+        var a = 1
+        $("#axtar").click(() => {
+            $.get("/Main/Search", { query: $("#word").val() }, function (res) {
+                console.log(res)
+                $("#tbod").empty();
+                $(res).each(function () {
+                    $("#tbod").append(
+                        `
+                                                 <tr>
+                                                            <th>${a}</th>
+                                                            <td>${this.userInfoName}</td>
+                                                            <td>${this.userInfoSurname}</td>
+                                                            <td>${this.userInfoAge}</td>
+                                                            <td>${this.userInfoPhone}</td>
+                                                            <td>${this.userInfoEmail}</td>
+                                                            <td>${this.userInfoPassportId}</td>
+                                                            <td>${this.userInfoTypeVisa}</td>
+                                                            <td style="width:5%"><img class="w-100 modal-target" src="../images/${this.userInfoFile}"/></td>
+                                                        </tr>
+                                        `)
+                    a++;
+
+                })
+            })
+            a = 1
+        })
+
+
+
+    </script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+
