@@ -3724,7 +3724,7 @@ p.header-widget-phone {
 /*  REQUEST FORM
 /*------------------------------------------*/
 
-.request-form { 
+.request-forma { 
   padding: 30px 25px 15px;
   margin: 0 20px 0 50px;
   -webkit-border-radius: 6px;
@@ -3732,12 +3732,12 @@ p.header-widget-phone {
   border-radius: 6px;
 }
 
-#sidebar .request-form { 
+#sidebar .request-forma { 
   padding: 35px 25px 15px;
   margin: 0 0 40px;
 }
 
-.request-form .col-md-12 { 
+.request-forma .col-md-12 { 
   padding: 0; 
 }
 
@@ -3749,7 +3749,7 @@ p.header-widget-phone {
 /*  Request Form Text
 /*------------------------------------------*/
 
-.request-form h5 { 
+.request-forma h5 { 
   font-weight: 700;
   line-height: 1;
   margin-bottom: 30px;
@@ -3759,8 +3759,8 @@ p.header-widget-phone {
 /*  Request Form Input
 /*------------------------------------------*/
 
-.request-form .form-control,
-.request-form .custom-select {
+.request-forma .form-control,
+.request-forma .custom-select {
   background-color: #fff;
   color: #333;
   height: 52px;
@@ -3781,7 +3781,7 @@ p.header-widget-phone {
   transition: all 400ms ease-in-out;
 }
 
-.request-form .custom-select {
+.request-forma .custom-select {
   display: inline-block;
   width: 100%;
   margin-bottom: 20px;
@@ -3791,18 +3791,18 @@ p.header-widget-phone {
 /*  Request Form Placeholder
 /*------------------------------------------*/
 
-.request-form .form-control::-moz-placeholder { color: #555; } 
-.request-form .custom-select::-moz-placeholder { color: #555; } 
-.request-form .form-control:-ms-input-placeholder { color: #555; }
-.request-form .custom-select:-ms-input-placeholder { color: #555; }
-.request-form .form-control::-webkit-input-placeholder { color: #555; }
-.request-form .custom-select::-webkit-input-placeholder { color: #555; }
+.request-forma .form-control::-moz-placeholder { color: #555; } 
+.request-forma .custom-select::-moz-placeholder { color: #555; } 
+.request-forma .form-control:-ms-input-placeholder { color: #555; }
+.request-forma .custom-select:-ms-input-placeholder { color: #555; }
+.request-forma .form-control::-webkit-input-placeholder { color: #555; }
+.request-forma .custom-select::-webkit-input-placeholder { color: #555; }
 
 /*------------------------------------------*/
 /*  Request Form Input Focus
 /*------------------------------------------*/
 
-.request-form .form-control:focus {
+.request-forma .form-control:focus {
   background-color: #f0f0f0;
   border-color: #ccc;
   outline: 0px none;
@@ -3813,7 +3813,7 @@ p.header-widget-phone {
 /*  Request Form Button
 /*------------------------------------------*/
 
-.request-form .btn {
+.request-forma .btn {
   display: block;
   width: 100%;
   height: 52px;
@@ -3836,7 +3836,7 @@ p.header-widget-phone {
 /*  Request Form Message
 /*------------------------------------------*/
 
-#request-form label.error {
+#request-forma label.error {
   color: #e74c3c;
   font-size: 14px;
   font-weight: 300;
@@ -3849,11 +3849,11 @@ p.header-widget-phone {
   text-align: center;
 }
 
-#request-form .sending-msg {
+#request-forma .sending-msg {
   margin-top: 20px;
 }
 
-#request-form .loading {
+#request-forma .loading {
   color: #2c3f69;
   font-family: 'Muli', sans-serif;
   font-size: 16px;

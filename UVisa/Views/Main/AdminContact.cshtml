@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model List<UserInfo>
+@model List<Contact>
 @{
     var a = 1;
 }
@@ -99,13 +99,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Adı</th>
-                                <th scope="col">Soyadı</th>
-                                <th scope="col">Yaşı</th>
-                                <th scope="col">Telefon</th>
                                 <th scope="col">Mail ünvanı</th>
-                                <th scope="col">Passport ID</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Şəkil</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Mesaj</th>
                             </tr>
                         </thead>
                         <tbody id="tbod">
@@ -113,14 +109,10 @@
                             {
                                 <tr>
                                     <th>@a</th>
-                                    <td>@item.UserInfoName</td>
-                                    <td>@item.UserInfoSurname</td>
-                                    <td>@item.UserInfoAge</td>
-                                    <td>@item.UserInfoPhone</td>
-                                    <td>@item.UserInfoEmail</td>
-                                    <td>@item.UserInfoPassportId</td>
-                                    <td>@item.UserInfoTypeVisa</td>
-                                    <td style="width:5%"><img class="w-100 modal-target" src="~/images/@item.UserInfoFile" /></td>
+                                    <td>@item.ContactName</td>
+                                    <td>@item.ContactEmail</td>
+                                    <td>@item.ContactPhone</td>
+                                    <td title="@item.ContactMessage">@item.ContactMessage</td>
                                 </tr>
                                 a++;
                             }
@@ -140,50 +132,46 @@
 
     </section>
 
-    <div id="modal" class="modal">
+   @* <div id="modal" class="modal">
         <span id="modal-close" class="modal-close">&times;</span>
         <img id="modal-content" class="modal-content">
         <div id="modal-caption" class="modal-caption"></div>
-    </div>
+    </div>*@
 
     <script>
-        var modal = document.getElementById('modal');
+        //var modal = document.getElementById('modal');
 
-        var modalClose = document.getElementById('modal-close');
-        modalClose.addEventListener('click', function () {
-            modal.style.display = "none";
-        });
-        document.addEventListener('click', function (e) {
-            if (e.target.className.indexOf('modal-target') !== -1) {
-                console.log("65")
-                var img = e.target;
-                var modalImg = document.getElementById("modal-content");
-                var captionText = document.getElementById("modal-caption");
-                modal.style.display = "block";
-                modalImg.src = img.src;
-                captionText.innerHTML = img.alt;
-            }
-        });
+        //var modalClose = document.getElementById('modal-close');
+        //modalClose.addEventListener('click', function () {
+        //    modal.style.display = "none";
+        //});
+        //document.addEventListener('click', function (e) {
+        //    if (e.target.className.indexOf('modal-target') !== -1) {
+        //        console.log("65")
+        //        var img = e.target;
+        //        var modalImg = document.getElementById("modal-content");
+        //        var captionText = document.getElementById("modal-caption");
+        //        modal.style.display = "block";
+        //        modalImg.src = img.src;
+        //        captionText.innerHTML = img.alt;
+        //    }
+        //});
         var a = 1
         $("#axtar").click(() => {
-            $.get("/Main/Search", { query: $("#word").val() }, function (res) {
+            $.get("/Main/SearchContact", { query: $("#word").val() }, function (res) {
                 console.log(res)
                 $("#tbod").empty();
                 $(res).each(function () {
                     $("#tbod").append(
                         `
-                                                 <tr>
-                                                            <th>${a}</th>
-                                                            <td>${this.userInfoName}</td>
-                                                            <td>${this.userInfoSurname}</td>
-                                                            <td>${this.userInfoAge}</td>
-                                                            <td>${this.userInfoPhone}</td>
-                                                            <td>${this.userInfoEmail}</td>
-                                                            <td>${this.userInfoPassportId}</td>
-                                                            <td>${this.userInfoTypeVisa}</td>
-                                                            <td style="width:5%"><img class="w-100 modal-target" src="../images/${this.userInfoFile}"/></td>
-                                                        </tr>
-                                        `)
+                                                         <tr>
+                                                                    <th>${a}</th>
+                                                                    <td>${this.contactName}</td>
+                                                                    <td>${this.contactEmail}</td>
+                                                                    <td>${this.contactPhone}</td>
+                                                                    <td>${this.contactMessage}</td>
+                                                                </tr>
+                                                `)
                     a++;
 
                 })

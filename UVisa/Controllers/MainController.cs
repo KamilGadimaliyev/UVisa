@@ -26,6 +26,12 @@ namespace UVisa.Controllers
             ViewBag.Count = Math.Ceiling((decimal)_sql.UserInfos.Count() / 20);
             return View(_sql.UserInfos.Skip(page * 20).Take(20).ToList());
         }
+        [Authorize]
+        public IActionResult AdminContact(int page = 0)
+        {
+            ViewBag.Count = Math.Ceiling((decimal)_sql.Contacts.Count() / 20);
+            return View(_sql.Contacts.Skip(page * 20).Take(20).ToList());
+        }
         public IActionResult Index()
         {
             return View();
@@ -106,6 +112,11 @@ namespace UVisa.Controllers
             var a = _sql.UserInfos.Where(x => x.UserInfoName.ToLower().Contains(query.ToLower()));
             return Json(a);
         }
+        public JsonResult SearchContact(string query)
+        {
+            var a = _sql.Contacts.Where(x => x.ContactName.ToLower().Contains(query.ToLower()));
+            return Json(a);
+        }
         //odenis sistemi
         [HttpPost]
         public IActionResult Odenikec(UserInfo userInfo, IFormFile Photo)
@@ -118,6 +129,20 @@ namespace UVisa.Controllers
             userInfo.UserInfoFile = filename;
             _sql.UserInfos.Add(userInfo);
             _sql.SaveChanges();
+
+            ClaimsIdentity identity = new ClaimsIdentity("Cookie");
+            identity.AddClaims(new[]
+            {
+                        new Claim(ClaimTypes.Sid, "Id"),
+                        new Claim(ClaimTypes.Role, "Person")
+                });
+
+            var principal = new ClaimsPrincipal(identity);
+            HttpContext.SignInAsync(principal, new AuthenticationProperties()
+            {
+                ExpiresUtc = DateTime.UtcNow.AddDays(7)
+            });
+
             Order o = new Order();
             o.OrderUserInfoId = userInfo.UserInfoId;
             o.OrderMoney = 106;
@@ -140,16 +165,41 @@ namespace UVisa.Controllers
             md.Date = order.OrderDate;
             md.Passport = user.UserInfoPassportId;
             md.TypeVisa = user.UserInfoTypeVisa;
-
             string json = "{\"public_key\":\"i000200098\",\"amount\":\"" + order.OrderMoney + "\",\"currency\":\"AZN\",\"description\":\"" + user.UserInfoName + "\",\"order_id\":\"" + orderid + "\", \"language\":\"az\"}";
             ViewBag.Data = Base64Encode(json);
             string signature = "TmXi3RH8ES9aAwbNyjcGnCGm" + ViewBag.Data + "TmXi3RH8ES9aAwbNyjcGnCGm";
             ViewBag.Signature = Hash(signature);
             return View(md);
         }
+        [HttpGet]
+        public IActionResult result()
+        {
+            var usid = int.Parse(User.FindFirstValue("Id"));
+            var orderid = _sql.Orders.OrderByDescending(x => x.OrderDate).LastOrDefault(x => x.OrderUserInfoId == usid).OrderId;
+            var order = _sql.Orders.SingleOrDefault(x => x.OrderId == orderid);
+            var user = _sql.UserInfos.SingleOrDefault(x => x.UserInfoId == order.OrderUserInfoId);
+            MainData md = new MainData();
+            md.OrderId = orderid;
+            md.Name = user.UserInfoName;
+            md.Money = order.OrderMoney;
+            md.Photo = user.UserInfoFile;
+            md.Date = order.OrderDate;
+            md.Passport = user.UserInfoPassportId;
+            md.TypeVisa = user.UserInfoTypeVisa;
+            string json = "{\"public_key\":\"i000200098\",\"order_id\":\"" + orderid + "\"}";
+            ViewBag.Data = Base64Encode(json);
+            string signature = "TmXi3RH8ES9aAwbNyjcGnCGm" + ViewBag.Data + "TmXi3RH8ES9aAwbNyjcGnCGm";
+            ViewBag.Signature = Hash(signature);
+            return View(md);
+        }
 
-
-
+        public IActionResult result_s(int id)
+        {
+            Order order = _sql.Orders.SingleOrDefault(x => x.OrderId == id);
+            order.OrderStatus = true;
+            _sql.SaveChanges();
+            return Ok("success");
+        }
         static string Hash(string input)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(input);
