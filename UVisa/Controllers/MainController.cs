@@ -10,6 +10,9 @@ using System.IO;
 using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
 namespace UVisa.Controllers
 {
@@ -21,7 +24,7 @@ namespace UVisa.Controllers
             _sql = sql;
         }
         [Authorize]
-        public IActionResult AdminIndex(int page=0)
+        public IActionResult AdminIndex(int page = 0)
         {
             ViewBag.Count = Math.Ceiling((decimal)_sql.UserInfos.Count() / 20);
             return View(_sql.UserInfos.Skip(page * 20).Take(20).ToList());
@@ -129,19 +132,25 @@ namespace UVisa.Controllers
             userInfo.UserInfoFile = filename;
             _sql.UserInfos.Add(userInfo);
             _sql.SaveChanges();
+            //var getUser = _sql.UserInfos.SingleOrDefault(x => x.UserInfoName == userInfo.UserInfoName && x.UserInfoPassportId == userInfo.UserInfoPassportId);
 
-            ClaimsIdentity identity = new ClaimsIdentity("Cookie");
-            identity.AddClaims(new[]
-            {
-                        new Claim(ClaimTypes.Sid, "Id"),
-                        new Claim(ClaimTypes.Role, "Person")
-                });
+            var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, userInfo.UserInfoName),
+                    new Claim("Id", userInfo.UserInfoId.ToString()),
+                };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var princitial = new ClaimsPrincipal(identity);
+            var props = new AuthenticationProperties();
+            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
 
-            var principal = new ClaimsPrincipal(identity);
-            HttpContext.SignInAsync(principal, new AuthenticationProperties()
-            {
-                ExpiresUtc = DateTime.UtcNow.AddDays(7)
-            });
+
+            var usid = User.FindFirstValue("Id");
+            var name= User.Identity.Name;
+
+            var usida = HttpContext.User.FindFirst("Id");
+
+
 
             Order o = new Order();
             o.OrderUserInfoId = userInfo.UserInfoId;
@@ -165,7 +174,7 @@ namespace UVisa.Controllers
             md.Date = order.OrderDate;
             md.Passport = user.UserInfoPassportId;
             md.TypeVisa = user.UserInfoTypeVisa;
-            string json = "{\"public_key\":\"i000200098\",\"amount\":\"" + order.OrderMoney + "\",\"currency\":\"AZN\",\"description\":\"" + user.UserInfoName + "\",\"order_id\":\"" + orderid + "\", \"language\":\"az\"}";
+            string json = "{\"public_key\":\"i000200187\",\"amount\":\"" + order.OrderMoney + "\",\"currency\":\"AZN\",\"description\":\"" + user.UserInfoName + "\",\"order_id\":\"" + orderid + "\", \"language\":\"az\"}";
             ViewBag.Data = Base64Encode(json);
             string signature = "TmXi3RH8ES9aAwbNyjcGnCGm" + ViewBag.Data + "TmXi3RH8ES9aAwbNyjcGnCGm";
             ViewBag.Signature = Hash(signature);
@@ -186,7 +195,7 @@ namespace UVisa.Controllers
             md.Date = order.OrderDate;
             md.Passport = user.UserInfoPassportId;
             md.TypeVisa = user.UserInfoTypeVisa;
-            string json = "{\"public_key\":\"i000200098\",\"order_id\":\"" + orderid + "\"}";
+            string json = "{\"public_key\":\"i000200187\",\"order_id\":\"" + orderid + "\"}";
             ViewBag.Data = Base64Encode(json);
             string signature = "TmXi3RH8ES9aAwbNyjcGnCGm" + ViewBag.Data + "TmXi3RH8ES9aAwbNyjcGnCGm";
             ViewBag.Signature = Hash(signature);

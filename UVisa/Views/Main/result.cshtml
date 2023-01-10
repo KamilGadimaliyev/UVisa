@@ -258,7 +258,7 @@
             if (x.status == "success") {
                 sp.text("Ödəniş uğurla keçdi");
                 sp.css("color", "green");
-                $.post('https://brmdclub.com/home/result_s', { "id": @Model.OrderId }, function (x) {
+                $.post('https://localhost:44350/home/result_s', { "id": @Model.OrderId }, function (x) {
                     console.log(x);
                 });
             } else {
@@ -270,3 +270,5 @@
         })
     </script>
 }
+
+          @*  https://brmdclub.com/main/result_s*@
