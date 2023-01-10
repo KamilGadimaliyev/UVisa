@@ -37,8 +37,10 @@ namespace UVisa
             {
                 options.Cookie.Name = "User";
                 options.LoginPath = "/Main/Login";
-                options.ExpireTimeSpan = TimeSpan.FromDays(7);
                 options.AccessDeniedPath = "/Main/Login";
+                //options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+                options.SlidingExpiration = false;
             });
             services.AddMvc();
             services.AddControllersWithViews();

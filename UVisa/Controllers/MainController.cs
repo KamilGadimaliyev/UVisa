@@ -136,22 +136,12 @@ namespace UVisa.Controllers
 
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, userInfo.UserInfoName),
                     new Claim("Id", userInfo.UserInfoId.ToString()),
                 };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var princitial = new ClaimsPrincipal(identity);
             var props = new AuthenticationProperties();
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
-
-
-            var usid = User.FindFirstValue("Id");
-            var name= User.Identity.Name;
-
-            var usida = HttpContext.User.FindFirst("Id");
-
-
-
             Order o = new Order();
             o.OrderUserInfoId = userInfo.UserInfoId;
             o.OrderMoney = 106;
