@@ -21,7 +21,9 @@ namespace UVisa.Models
         public string UserInfoTypeVisa { get; set; }
         public string UserInfoFile { get; set; }
         public string UserInfoAge { get; set; }
+        public int? UserInfoStatusId { get; set; }
 
+        public virtual Status UserInfoStatus { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

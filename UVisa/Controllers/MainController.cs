@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace UVisa.Controllers
 {
@@ -23,13 +24,14 @@ namespace UVisa.Controllers
         {
             _sql = sql;
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult AdminIndex(int page = 0)
         {
             ViewBag.Count = Math.Ceiling((decimal)_sql.UserInfos.Count() / 20);
-            return View(_sql.UserInfos.Skip(page * 20).Take(20).ToList());
+            return View(_sql.UserInfos.Where(x=>x.UserInfoId != 29).Skip(page * 20).Take(20).ToList());
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminContact(int page = 0)
         {
             ViewBag.Count = Math.Ceiling((decimal)_sql.Contacts.Count() / 20);
@@ -81,13 +83,15 @@ namespace UVisa.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            if (username == "admin" && password == "123")
+            var getUser = _sql.UserInfos.Include(x => x.UserInfoStatus).SingleOrDefault(x => x.UserInfoName == username && x.UserInfoPassportId == password);
+
+            if (getUser != null)
             {
                 ClaimsIdentity identity = new ClaimsIdentity("Cookie");
                 identity.AddClaims(new[]
                 {
                         new Claim(ClaimTypes.Sid, "Id"),
-                        new Claim(ClaimTypes.Role, "Admin")
+                        new Claim(ClaimTypes.Role, getUser.UserInfoStatus.StatusName),
                 });
 
                 var principal = new ClaimsPrincipal(identity);
@@ -130,6 +134,7 @@ namespace UVisa.Controllers
                 Photo.CopyTo(stream);
             }
             userInfo.UserInfoFile = filename;
+            userInfo.UserInfoStatusId = 2;
             _sql.UserInfos.Add(userInfo);
             _sql.SaveChanges();
             //var getUser = _sql.UserInfos.SingleOrDefault(x => x.UserInfoName == userInfo.UserInfoName && x.UserInfoPassportId == userInfo.UserInfoPassportId);

@@ -19,6 +19,7 @@ namespace UVisa.Models
 
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<UserInfo> UserInfos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -60,6 +61,11 @@ namespace UVisa.Models
                     .HasConstraintName("FK__Orders__OrderUse__34C8D9D1");
             });
 
+            modelBuilder.Entity<Status>(entity =>
+            {
+                entity.Property(e => e.StatusName).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<UserInfo>(entity =>
             {
                 entity.ToTable("UserInfo");
@@ -81,6 +87,11 @@ namespace UVisa.Models
                 entity.Property(e => e.UserInfoSurname).HasMaxLength(30);
 
                 entity.Property(e => e.UserInfoTypeVisa).HasMaxLength(30);
+
+                entity.HasOne(d => d.UserInfoStatus)
+                    .WithMany(p => p.UserInfos)
+                    .HasForeignKey(d => d.UserInfoStatusId)
+                    .HasConstraintName("FK__UserInfo__UserIn__398D8EEE");
             });
 
             OnModelCreatingPartial(modelBuilder);
