@@ -125,7 +125,7 @@ namespace UVisa.Controllers
             return Json(a);
         }
         //odenis sistemi
-        [HttpPost]
+        //[HttpPost]
         public IActionResult Odenikec(UserInfo userInfo, IFormFile Photo)
         {
             string filename = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + Path.GetExtension(Photo.FileName);
@@ -154,8 +154,8 @@ namespace UVisa.Controllers
             _sql.SaveChanges();
             return RedirectToAction("Odeniset", "Main", new { orderid = o.OrderId });
         }
-        [HttpGet]
-        public IActionResult Odeniset(int orderid)
+        //[HttpGet]
+        public IActionResult Odeniset(int orderid)  
         {
             var order = _sql.Orders.SingleOrDefault(x => x.OrderId == orderid);
             var user = _sql.UserInfos.SingleOrDefault(x => x.UserInfoId == order.OrderUserInfoId);
