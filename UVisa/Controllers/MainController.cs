@@ -29,7 +29,7 @@ namespace UVisa.Controllers
         public IActionResult AdminIndex(int page = 0)
         {
             ViewBag.Count = Math.Ceiling((decimal)_sql.UserInfos.Count() / 20);
-            return View(_sql.UserInfos.Where(x=>x.UserInfoId != 29).Skip(page * 20).Take(20).ToList());
+            return View(_sql.Orders.Include(x=>x.OrderUserInfo).Where(x=>x.OrderUserInfo.UserInfoId != 29).Skip(page * 20).Take(20).ToList());
         }
         [Authorize(Roles = "Admin")]
         public IActionResult AdminContact(int page = 0)
@@ -137,8 +137,6 @@ namespace UVisa.Controllers
             userInfo.UserInfoStatusId = 2;
             _sql.UserInfos.Add(userInfo);
             _sql.SaveChanges();
-            //var getUser = _sql.UserInfos.SingleOrDefault(x => x.UserInfoName == userInfo.UserInfoName && x.UserInfoPassportId == userInfo.UserInfoPassportId);
-
             var claims = new List<Claim>
                 {
                     new Claim("Id", userInfo.UserInfoId.ToString()),
@@ -149,7 +147,7 @@ namespace UVisa.Controllers
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
             Order o = new Order();
             o.OrderUserInfoId = userInfo.UserInfoId;
-            o.OrderMoney = 106;
+            o.OrderMoney = 1;
             o.OrderDate = DateTime.Now;
             o.OrderStatus = false;
             _sql.Add(o);
@@ -171,7 +169,7 @@ namespace UVisa.Controllers
             md.TypeVisa = user.UserInfoTypeVisa;
             string json = "{\"public_key\":\"i000200187\",\"amount\":\"" + order.OrderMoney + "\",\"currency\":\"AZN\",\"description\":\"" + user.UserInfoName + "\",\"order_id\":\"" + orderid + "\", \"language\":\"az\"}";
             ViewBag.Data = Base64Encode(json);
-            string signature = "TmXi3RH8ES9aAwbNyjcGnCGm" + ViewBag.Data + "TmXi3RH8ES9aAwbNyjcGnCGm";
+            string signature = "P8GBCzexgrRcqDkhC496tVjm" + ViewBag.Data + "P8GBCzexgrRcqDkhC496tVjm";
             ViewBag.Signature = Hash(signature);
             return View(md);
         }
@@ -192,7 +190,7 @@ namespace UVisa.Controllers
             md.TypeVisa = user.UserInfoTypeVisa;
             string json = "{\"public_key\":\"i000200187\",\"order_id\":\"" + orderid + "\"}";
             ViewBag.Data = Base64Encode(json);
-            string signature = "TmXi3RH8ES9aAwbNyjcGnCGm" + ViewBag.Data + "TmXi3RH8ES9aAwbNyjcGnCGm";
+            string signature = "P8GBCzexgrRcqDkhC496tVjm" + ViewBag.Data + "P8GBCzexgrRcqDkhC496tVjm";
             ViewBag.Signature = Hash(signature);
             return View(md);
         }

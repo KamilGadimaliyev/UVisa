@@ -452,7 +452,7 @@
 
   .white-menu .wsmainfull, .lightgrey-menu .wsmainfull, .aqua-menu .wsmainfull, .blue-menu .wsmainfull { padding: 0; }
 
-  .wsmobileheader .smllogo { margin-top: 15px; }
+  /*.wsmobileheader .smllogo { margin-top: 15px; }*/
   .wsanimated-arrow { padding: 14px 28px 14px 0px; margin: 24px 0 0 20px; }
   .wsanimated-arrow span:before { top: -8px; width: 26px; }
   .wsanimated-arrow span:after { bottom: -8px; width: 20px; }
@@ -820,7 +820,7 @@
 
   .white-menu .wsmainfull, .lightgrey-menu .wsmainfull, .aqua-menu .wsmainfull, .blue-menu .wsmainfull { padding: 0; }
 
-  .wsmobileheader .smllogo { margin-top: 15px; }
+  /*.wsmobileheader .smllogo { margin-top: 15px; }*/
   .wsanimated-arrow { padding: 14px 28px 14px 0px; margin: 24px 0 0 20px; }
   .wsanimated-arrow span:before { top: -8px; width: 26px; }
   .wsanimated-arrow span:after { bottom: -8px; width: 20px; }
@@ -1000,7 +1000,7 @@
 
   .white-menu .wsmainfull, .lightgrey-menu .wsmainfull, .aqua-menu .wsmainfull, .blue-menu .wsmainfull { padding: 0; }
 
-  .wsmobileheader .smllogo { margin-top: 15px; }
+  /*.wsmobileheader .smllogo { margin-top: 15px; }*/
   .wsanimated-arrow { padding: 14px 28px 14px 0px; margin: 24px 0 0 20px; }
   .wsanimated-arrow span:before { top: -8px; width: 26px; }
   .wsanimated-arrow span:after { bottom: -8px; width: 20px; }

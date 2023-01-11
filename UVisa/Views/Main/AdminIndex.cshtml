@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model List<UserInfo>
+@model List<Order>
 @{
     var a = 1;
 }
@@ -100,11 +100,12 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Adı</th>
                                 <th scope="col">Soyadı</th>
-                                <th scope="col">Yaşı</th>
+                                <th scope="col">Doğum ili</th>
                                 <th scope="col">Telefon</th>
                                 <th scope="col">Mail ünvanı</th>
                                 <th scope="col">Passport ID</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Visa Tipi</th>
+                                <th scope="col">Ödəniş</th>
                                 <th scope="col">Şəkil</th>
                             </tr>
                         </thead>
@@ -113,14 +114,24 @@
                             {
                                 <tr>
                                     <th>@a</th>
-                                    <td>@item.UserInfoName</td>
-                                    <td>@item.UserInfoSurname</td>
-                                    <td>@item.UserInfoAge</td>
-                                    <td>@item.UserInfoPhone</td>
-                                    <td>@item.UserInfoEmail</td>
-                                    <td>@item.UserInfoPassportId</td>
-                                    <td>@item.UserInfoTypeVisa</td>
-                                    <td style="width:5%"><img class="w-100 modal-target" src="~/images/@item.UserInfoFile" /></td>
+                                    <td>@item.OrderUserInfo.UserInfoName</td>
+                                    <td>@item.OrderUserInfo.UserInfoSurname</td>
+                                    <td>@item.OrderUserInfo.UserInfoAge</td>
+                                    <td>@item.OrderUserInfo.UserInfoPhone</td>
+                                    <td>@item.OrderUserInfo.UserInfoEmail</td>
+                                    <td>@item.OrderUserInfo.UserInfoPassportId</td>
+                                    <td>@item.OrderUserInfo.UserInfoTypeVisa</td>
+                                    <td>
+                                        @if (item.OrderStatus==true)
+                                        {
+                                            <p>Ödəniş edilib</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Ödəniş olunmayıb</p>
+                                        }
+                                    </td>
+                                    <td style="width:5%"><img class="w-100 modal-target" src="~/images/@item.OrderUserInfo.UserInfoFile" /></td>
                                 </tr>
                                 a++;
                             }
@@ -172,18 +183,18 @@
                 $(res).each(function () {
                     $("#tbod").append(
                         `
-                                                 <tr>
-                                                            <th>${a}</th>
-                                                            <td>${this.userInfoName}</td>
-                                                            <td>${this.userInfoSurname}</td>
-                                                            <td>${this.userInfoAge}</td>
-                                                            <td>${this.userInfoPhone}</td>
-                                                            <td>${this.userInfoEmail}</td>
-                                                            <td>${this.userInfoPassportId}</td>
-                                                            <td>${this.userInfoTypeVisa}</td>
-                                                            <td style="width:5%"><img class="w-100 modal-target" src="../images/${this.userInfoFile}"/></td>
-                                                        </tr>
-                                        `)
+                                                         <tr>
+                                                                    <th>${a}</th>
+                                                                    <td>${this.userInfoName}</td>
+                                                                    <td>${this.userInfoSurname}</td>
+                                                                    <td>${this.userInfoAge}</td>
+                                                                    <td>${this.userInfoPhone}</td>
+                                                                    <td>${this.userInfoEmail}</td>
+                                                                    <td>${this.userInfoPassportId}</td>
+                                                                    <td>${this.userInfoTypeVisa}</td>
+                                                                    <td style="width:5%"><img class="w-100 modal-target" src="../images/${this.userInfoFile}"/></td>
+                                                                </tr>
+                                                `)
                     a++;
 
                 })
