@@ -22,6 +22,7 @@ namespace UVisa.Models
         public string UserInfoFile { get; set; }
         public string UserInfoAge { get; set; }
         public int? UserInfoStatusId { get; set; }
+        public string UserInfoForCountry { get; set; }
 
         public virtual Status UserInfoStatus { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

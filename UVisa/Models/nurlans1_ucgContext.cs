@@ -76,6 +76,8 @@ namespace UVisa.Models
 
                 entity.Property(e => e.UserInfoFile).HasMaxLength(30);
 
+                entity.Property(e => e.UserInfoForCountry).HasMaxLength(30);
+
                 entity.Property(e => e.UserInfoName).HasMaxLength(30);
 
                 entity.Property(e => e.UserInfoPassportId)

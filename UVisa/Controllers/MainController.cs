@@ -41,6 +41,24 @@ namespace UVisa.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult BeforeVisa(string visa,string country)
+        {
+            var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, visa.ToString()),
+                    new Claim(ClaimTypes.Country, country.ToString()),
+                };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var princitial = new ClaimsPrincipal(identity);
+            var props = new AuthenticationProperties();
+            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
+            var visacookie = User.Identity.Name;
+            var visacookiee = HttpContext.User.FindFirst("visa");
+            var countrycookie = User.FindFirstValue("country");
+
+            return RedirectToAction("Application","Main");
+        }
         public IActionResult RusIndex()
         {
             return View();
