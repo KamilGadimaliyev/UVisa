@@ -1,1 +1,1 @@
-﻿ Scaffold-DbContext "Server=wdb4.my-hosting-panel.com;Database=nurlans1_ucg;user id=nurlans1_ucg;password=2M003z`$if; Trusted_Connection=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
+﻿Scaffold-DbContext "Server=wdb4.my-hosting-panel.com;Database=nurlans1_azerbaijan;user id=nurlans1_azerbaijan;password=z091m6Vs?; Trusted_Connection=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force

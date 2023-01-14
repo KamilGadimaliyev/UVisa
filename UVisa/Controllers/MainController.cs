@@ -29,7 +29,7 @@ namespace UVisa.Controllers
         public IActionResult AdminIndex(int page = 0)
         {
             ViewBag.Count = Math.Ceiling((decimal)_sql.UserInfos.Count() / 20);
-            return View(_sql.Orders.Include(x=>x.OrderUserInfo).Where(x=>x.OrderUserInfo.UserInfoId != 29).Skip(page * 20).Take(20).ToList());
+            return View(_sql.Orders.Include(x => x.OrderUserInfo).Where(x => x.OrderUserInfo.UserInfoId != 29).Skip(page * 20).Take(20).ToList());
         }
         [Authorize(Roles = "Admin")]
         public IActionResult AdminContact(int page = 0)
@@ -42,7 +42,7 @@ namespace UVisa.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult BeforeVisa(string visa,string country)
+        public IActionResult BeforeVisa(string visa, string country)
         {
             var claims = new List<Claim>
                 {
@@ -53,11 +53,21 @@ namespace UVisa.Controllers
             var princitial = new ClaimsPrincipal(identity);
             var props = new AuthenticationProperties();
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
-            var visacookie = User.Identity.Name;
-            var visacookiee = HttpContext.User.FindFirst("visa");
-            var countrycookie = User.FindFirstValue("country");
-
-            return RedirectToAction("Application","Main");
+            return RedirectToAction("Application", "Main");
+        }
+        [HttpPost]
+        public IActionResult BeforeVisaRus(string visa, string country)
+        {
+            var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, visa.ToString()),
+                    new Claim(ClaimTypes.Country, country.ToString()),
+                };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var princitial = new ClaimsPrincipal(identity);
+            var props = new AuthenticationProperties();
+            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
+            return RedirectToAction("RusApplication", "Main");
         }
         public IActionResult RusIndex()
         {
@@ -65,10 +75,14 @@ namespace UVisa.Controllers
         }
         public IActionResult Application()
         {
+            ViewBag.visatype = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Name).Value;
+            ViewBag.country = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Country).Value;
             return View();
         }
         public IActionResult RusApplication()
         {
+            ViewBag.visatype = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Name).Value;
+            ViewBag.country = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Country).Value;
             return View();
         }
         public IActionResult Privacy()
@@ -173,7 +187,7 @@ namespace UVisa.Controllers
             return RedirectToAction("Odeniset", "Main", new { orderid = o.OrderId });
         }
         //[HttpGet]
-        public IActionResult Odeniset(int orderid)  
+        public IActionResult Odeniset(int orderid)
         {
             var order = _sql.Orders.SingleOrDefault(x => x.OrderId == orderid);
             var user = _sql.UserInfos.SingleOrDefault(x => x.UserInfoId == order.OrderUserInfoId);
