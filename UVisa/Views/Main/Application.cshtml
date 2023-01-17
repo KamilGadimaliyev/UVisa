@@ -125,7 +125,7 @@
                                     <div class="contact-box-txt">
                                         <h5 class="h5-sm deepblue-color">@ViewBag.country Visa</h5>
                                         <h5 class="h5-xs deepblue-color">Price</h5>
-                                        <p class="grey-color">106$</p>
+                                        <p class="grey-color">399$</p>
                                     </div>
                                 </div>
                             </div>
@@ -156,14 +156,20 @@
                                     <div id="input-email" class="col-lg-12">
                                         <input type="text" asp-for="UserInfoPassportId" class="form-control email" placeholder="Enter Your Passport ID*" required>
                                     </div>
+
+
+
+
+                                    <input type="hidden" asp-for="UserInfoTypeVisa" value="@ViewBag.country" class="form-control" required>
+
                                     <div id="input-subject" class="col-lg-12 input-subject">
-                                        <select asp-for="UserInfoTypeVisa" id="inlineFormCustomSelect2" class="custom-select subject" required>
+                                        <select asp-for="UserInfoForCountry" id="inlineFormCustomSelect2" class="custom-select subject" required>
                                             <option value="">Your Application About..</option>
-                                            <option>Student Visa</option>
-                                            <option>Travel visa</option>
-                                            <option>Working Visa</option>
-                                            <option>Business Visa</option>
-                                            <option>Visitor Visa</option>
+                                            <option>İndia</option>
+                                            <option>Nepal</option>
+                                            <option>Sri lanka</option>
+                                            <option>Pakistan</option>
+                                            <option>Bangladesh</option>
                                             <option>Other...</option>
                                         </select>
                                     </div>

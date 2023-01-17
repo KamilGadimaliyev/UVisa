@@ -179,7 +179,7 @@ namespace UVisa.Controllers
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, princitial, props).Wait();
             Order o = new Order();
             o.OrderUserInfoId = userInfo.UserInfoId;
-            o.OrderMoney = 1;
+            o.OrderMoney = 399;
             o.OrderDate = DateTime.Now;
             o.OrderStatus = false;
             _sql.Add(o);
